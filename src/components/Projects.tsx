@@ -31,7 +31,6 @@ const projects: Project[] = [
       learned: "Deep understanding of supply chain security, package ecosystems, and the importance of proactive security tooling in the developer workflow.",
     },
     tech: ["Python", "PyPI API", "NLP", "Security"],
-    github: "https://github.com/saadpatel",
   },
   {
     id: "lambda-cost-optimization",
@@ -44,7 +43,6 @@ const projects: Project[] = [
       learned: "Hands-on experience with AWS cost optimization, serverless architecture patterns, and the importance of automated cloud governance.",
     },
     tech: ["AWS Lambda", "CloudWatch", "SNS", "Python", "Boto3"],
-    github: "https://github.com/saadpatel",
   },
   {
     id: "devops-ecommerce",
@@ -57,7 +55,6 @@ const projects: Project[] = [
       learned: "Comprehensive understanding of GitOps principles, Kubernetes orchestration, infrastructure as code, and the complete DevOps lifecycle.",
     },
     tech: ["AWS EKS", "Terraform", "GitHub Actions", "Argo CD", "Helm", "Docker"],
-    github: "https://github.com/saadpatel",
   },
   {
     id: "url-shortener",
@@ -70,8 +67,6 @@ const projects: Project[] = [
       learned: "REST API best practices, database design for high-throughput applications, and the importance of idempotent operations.",
     },
     tech: ["FastAPI", "PostgreSQL", "SQLAlchemy", "Docker", "Python"],
-    github: "https://github.com/saadpatel",
-    demo: "#",
   },
   {
     id: "ai-weather",
@@ -84,7 +79,6 @@ const projects: Project[] = [
       learned: "API integration patterns, AI/ML API usage, containerization best practices, and building user-friendly data-driven applications.",
     },
     tech: ["Flask", "Docker", "AI/ML API", "Python", "REST APIs"],
-    github: "https://github.com/saadpatel",
   },
 ];
 
@@ -169,32 +163,16 @@ export function Projects() {
                 {/* Links */}
                 <div className="flex items-center justify-between">
                   <div className="flex gap-2">
-                    {project.github && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-8 px-2"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(project.github, "_blank");
-                        }}
-                      >
-                        <Github className="h-4 w-4" />
-                      </Button>
-                    )}
-                    {project.demo && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-8 px-2"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(project.demo, "_blank");
-                        }}
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    )}
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-8 px-3 text-xs text-muted-foreground"
+                      disabled
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="h-4 w-4 mr-1" />
+                      Link coming soon
+                    </Button>
                   </div>
                   <span className="text-sm text-primary flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     View details
@@ -265,22 +243,10 @@ export function Projects() {
 
               {/* Actions */}
               <div className="flex gap-3 mt-8">
-                {selectedProject.github && (
-                  <Button asChild className="gradient-primary">
-                    <a href={selectedProject.github} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-2" />
-                      View on GitHub
-                    </a>
-                  </Button>
-                )}
-                {selectedProject.demo && (
-                  <Button asChild variant="outline">
-                    <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
-                    </a>
-                  </Button>
-                )}
+                <Button disabled className="opacity-60">
+                  <Github className="h-4 w-4 mr-2" />
+                  GitHub link coming soon
+                </Button>
               </div>
             </motion.div>
           </motion.div>
