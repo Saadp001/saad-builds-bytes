@@ -8,9 +8,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/saadpatel", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/saadpatel", label: "LinkedIn" },
-  { icon: BookOpen, href: "https://medium.com/@saadpatel", label: "Medium" },
+  { icon: Github, href: "https://github.com/<YOUR_GITHUB_USERNAME>", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/<YOUR_LINKEDIN_USERNAME>/", label: "LinkedIn" },
+  { icon: BookOpen, href: "https://medium.com/@<YOUR_MEDIUM_USERNAME>", label: "Medium" },
   { icon: Mail, href: "mailto:psaad2988@gmail.com", label: "Email" },
 ];
 
