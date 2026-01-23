@@ -25,21 +25,49 @@ export function Contact() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseAnswer, setResponseAnswer] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setResponseAnswer(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      const response = await fetch(
+        "https://saadp200.app.n8n.cloud/webhook/portfolio-query",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            source: "portfolio-contact-form",
+          }),
+        }
+      );
 
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
 
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
+      const data = await response.json();
+      setResponseAnswer(data.answer);
+      
+      // Clear only the message field on success
+      setFormData(prev => ({ ...prev, message: "" }));
+      
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Unable to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -135,7 +163,7 @@ export function Contact() {
                   className="w-full gradient-primary text-primary-foreground hover:opacity-90"
                 >
                   {isSubmitting ? (
-                    "Sending..."
+                    "Thinking..."
                   ) : (
                     <>
                       Send Message
@@ -143,6 +171,17 @@ export function Contact() {
                     </>
                   )}
                 </Button>
+                
+                {responseAnswer && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-6 p-4 rounded-xl bg-primary/10 border border-primary/20"
+                  >
+                    <p className="text-sm font-medium text-primary mb-2">Response:</p>
+                    <p className="text-foreground">{responseAnswer}</p>
+                  </motion.div>
+                )}
               </form>
             </motion.div>
 
