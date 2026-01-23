@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com/<YOUR_GITHUB_USERNAME>", label: "GitHub" },
-  { icon: Linkedin, href: "https://www.linkedin.com/in/<YOUR_LINKEDIN_USERNAME>/", label: "LinkedIn" },
+  { icon: Github, href: "https://github.com/Saadp001", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/saad-patel-469016314/", label: "LinkedIn" },
   { icon: Mail, href: "mailto:psaad2988@gmail.com", label: "Email" },
 ];
 
