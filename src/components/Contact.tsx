@@ -62,7 +62,7 @@ export function Contact() {
     } catch (error) {
       toast({
         title: "Error",
-        description: "Unable to send message. Please try again later.",
+        description: "Something went wrong. Please try again later.",
         variant: "destructive",
       });
     } finally {
