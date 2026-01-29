@@ -34,14 +34,16 @@ export function Contact() {
 
     try {
       const response = await fetch(
-        "https://webhook.site/7ae5140b-1fb7-4624-8849-7932750c82ec",
+        "https://saadp200.app.n8n.cloud/webhook/portfolio-query",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            test: "hello",
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
           }),
         }
       );
